@@ -53,9 +53,26 @@ WALA为Java字节码和相关语言以及JavaScript提供了静态分析功能;�
 
 
 # 下载并运行WALA
- - 下载/运行，待补充
+## download project
+ - 下载 git clone https://github.com/wala/WALA.git
+ - 通过gradle编译项目
+ - WALA基于java8运行
  - wala提供了很多test用例，可以debug用；
  
+## configuring properties.
+ - 拷贝com.ibm.wala.core项目,resource下wala.properties.sample到resource下wala.properties
+ - 配置java_runtime_dir地址,以macos为例，
+   jvm默认安装路径为/Library/Java/JavaVirtualMachines/jdk1.8.0_261.jdk/Contents/Home/jre/lib,确保路径下包含rt.jar,如果找不到,
+   在MacOSX上，它被也被称为classes.jarand，位于/System/Library/Frameworks/Classes
+ - 配置output_dir地址，如果测试依赖于SWT不需要配置，如果依赖文件导出，如PDFTypeHierarchy，如果不配置导出路径，执行方法会失败
+ 
+## run test demo
+ - 在com.ibm.wala.core项目tests下，同样拷贝并编辑wala.properties,以支持项目正常运行；
+ - 配置完成后可以在wala项目tests相关项目中，执行对应的测试代码。
+
+## note
+   windows环境下路径的分隔符应该是'/'而不是'\',我没有windows环境未验证，猜测应该是代码适配了平台。
+   
 # 通常WALA执行顺序
  - WALA提供了一组用于程序分析的库。通常情况下wala将通过一下的顺序来执行这些库，来执行过程间数据流分析：
  
@@ -65,21 +82,18 @@ WALA为Java字节码和相关语言以及JavaScript提供了静态分析功能;�
     IR是由SSA提供的表示指令集的不可变的控制流图。
  
  # 项目模块
- - com.ibm.wala.core
- - com.ibm.wala.core.testdata
- - com.ibm.wala.core.tests
- - com.ibm.wala.core.js
- - com.ibm.wala.core.eclipse
- - com.ibm.wala.core.shrike
- - com.ibm.wala.cast -- The core CAst System machinery
- - com.ibm.wala.cast.test -- Test support for the CAst
- - com.ibm.wala.cast.java -- The CAst-based Java front end
- - com.ibm.wala.cast.java.test -- Tests for the CAst-based Java front end
- - com.ibm.wala.cast.java.test.data -- Test data for the CAst-based Java front end
- - com.ibm.wala.ide.jdt -- The JDT- and CAst-based Java front end
- - com.ibm.wala.ide.jdt.test -- Tests for the JDT front end
- - com.ibm.wala.cast.java.polyglot -- The Polyglot- and CAst-based Java front end
- - com.ibm.wala.cast.java.polyglot.test -- Tests for the Polyglot- and CAst-based Java front end
+ - com.ibm.wala.core  -- 核心包
+ - com.ibm.wala.core.tests -- 核心包测试
+ - com.ibm.wala.shrike -- Shrike字节码,包含ShrikeCT和ShrikeBT,WALA依赖Shrike去读取class文件,Shrike也可以做一些字节码操作。
+ - com.ibm.wala.cast -- CAst支持，Common Abstract Syntax Tree 通用抽象语法树
+ - com.ibm.wala.cast.test -- CAst测试
+ - com.ibm.wala.cast.java -- 基于CAst的Java前端，两种实现，一种是polyglot 一种是Eclipse JDT
+ - com.ibm.wala.cast.java.test -- 基于CAst的Java前端测试
+ - com.ibm.wala.cast.java.test.data -- 基于CAst的Java前端的测试数据
+ - com.ibm.wala.ide.jdt -- 基于JDT和CAst的Java前端
+ - com.ibm.wala.ide.jdt.test -- JDT前端测试
+ - com.ibm.wala.cast.java.polyglot -- 基于Polyglot和CAst的Java前端
+ - com.ibm.wala.cast.java.polyglot.test -- 基于Polyglot和CAst的Java前端测试
  
 
 # 核心技术介绍
