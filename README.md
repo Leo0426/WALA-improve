@@ -98,7 +98,7 @@ WALA为Java字节码和相关语言以及JavaScript提供了静态分析功能;�
 
 # 核心技术介绍
  - [分析范围](./doc/analysis-scope.md)
- - 调用图
+ - [调用图](./doc/call-graph.md)
  - Java前端和JavaScript调用图
  - 类层次结构图
  - IR
