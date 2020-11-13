@@ -44,7 +44,7 @@ WALA为Java字节码和相关语言以及JavaScript提供了静态分析功能;�
  - Java类型系统和类层次结构分析
  - 支持Java和JavaScript
  - 过程间数据流分析（RHS求解器）
- - 上下文敏感的基于列表的切片器
+ - 基于上下文相关的列表切片器
  - 指针分析和调用图构造
  - 基于SSA的寄存器传输语言IR
  - 迭代数据流的通用框架
@@ -99,13 +99,14 @@ WALA为Java字节码和相关语言以及JavaScript提供了静态分析功能;�
 # 核心技术介绍
  - [分析范围](./doc/analysis-scope.md)
  - [调用图](./doc/call-graph.md)
+ - [指针分析](./doc/pointer-analysis.md)
+ - [CAst_Call_Graph]
  - Java前端和JavaScript调用图
  - 类层次结构图
  - IR
  - 映射源代码
  - 映射Java实体名称
  - 本地代码
- - 指针分析
  - Slicer
  
 # 问题交流
